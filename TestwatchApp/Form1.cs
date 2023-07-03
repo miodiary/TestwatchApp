@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -32,29 +33,65 @@ namespace TestwatchApp
             series.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
         }
 
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            chart1.Series.Add(series);
-        }
+        string path = "Test.csv";
+        //string[] id = new string[25];
+        //int[] jap = new int[25];
+        //int[] math = new int[25];
+        //int[] eng = new int[25];
+        int[] ave = new int[100];
+        int n = 0;
 
         int x1 = 0;
         int y1 = 0;
-        //int x2 = 0;
-        //int y2 = 0;
-        int i = 0;
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            chart1.Series.Add(series);
+
+            if(System.IO.File.Exists(path) == false)
+            {
+                MessageBox.Show("ファイルが見つかりません");
+                return;
+            }
+            using(var sr = new StreamReader(path))
+            {
+                string line = null;
+                while ((line = sr.ReadLine()) != null)
+                {
+                    string[] str = line.Split(',');
+
+                    ave[n] = int.Parse(str[1]);
+
+                    x1 = n;
+                    y1 = ave[n];
+
+                    series.Points.AddXY(x1, y1);
+
+                    label5.Text = textBox1.Text + "：" + textBox2.Text + "点";
+
+                    n++;
+                }
+                sr.Close();
+            }
+
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            x1 = i;
+            x1 = n;
             y1 = int.Parse(textBox2.Text);
 
-            series.Points.AddXY(x1, y1);
-
-            
+            series.Points.AddXY(x1, y1);          
 
             label5.Text = textBox1.Text + "：" + textBox2.Text + "点";
 
-            i++;
+            using(var sr = new System.IO.StreamWriter(path,true))
+            {
+                sr.WriteLine(textBox1.Text + "," + y1);
+            }
+            MessageBox.Show("ファイルに追記しました");
+
+            n++;
         }
     }
 }
