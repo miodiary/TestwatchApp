@@ -99,9 +99,8 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(507, 365);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 12);
+            this.label5.Size = new System.Drawing.Size(0, 12);
             this.label5.TabIndex = 9;
-            this.label5.Text = "label5";
             // 
             // chart1
             // 

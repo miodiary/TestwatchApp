@@ -28,6 +28,8 @@ namespace TestwatchApp
             // 「chartArea」という名前のエリアを生成します
             ChartArea chartArea = new ChartArea("chartArea");
             chart1.ChartAreas.Add(chartArea);
+            chart1.ChartAreas["chartArea"].AxisY.Minimum = 0;
+            chart1.ChartAreas["chartArea"].AxisY.Maximum = 500;
 
             // Series(系列)を生成します
             series1 = new Series();
@@ -76,6 +78,10 @@ namespace TestwatchApp
 
         int x1 = 0;
         int y1 = 0;
+        int y2 = 0;
+        int y3 = 0;
+        int y4 = 0;
+        int y5 = 0;
 
         private void Form1_Load(object sender, EventArgs e)
         {
@@ -105,8 +111,16 @@ namespace TestwatchApp
 
                     x1 = n;
                     y1 = sum[n];
+                    y2 = jap[n];
+                    y3 = math1[n];
+                    y4 = math2[n];
+                    y5 = eng[n];
 
                     series1.Points.AddXY(x1, y1);
+                    series2.Points.AddXY(x1, y2);
+                    series3.Points.AddXY(x1, y3);
+                    series4.Points.AddXY(x1, y4);
+                    series5.Points.AddXY(x1, y5);
 
                     n++;
                 }
@@ -118,15 +132,24 @@ namespace TestwatchApp
         private void button1_Click(object sender, EventArgs e)
         {
             x1 = n;
-            y1 = int.Parse(textBox2.Text);
+            y2 = int.Parse(textBox2.Text);
+            y3 = int.Parse(textBox3.Text);
+            y4 = int.Parse(textBox4.Text);
+            y5 = int.Parse(textBox5.Text);
+            y1 = y2 + y3 + y4 + y5;
 
-            series1.Points.AddXY(x1, y1);          
+            series1.Points.AddXY(x1, y1);
+            series2.Points.AddXY(x1, y2);
+            series3.Points.AddXY(x1, y3);
+            series4.Points.AddXY(x1, y4);
+            series5.Points.AddXY(x1, y5);
 
-            label5.Text = textBox1.Text + "：" + textBox2.Text + "点";
+            label5.Text = textBox1.Text + " 合計：" + y1 + "点";
 
             using(var sr = new System.IO.StreamWriter(path,true))
             {
-                sr.WriteLine(textBox1.Text + "," + y1);
+                sr.WriteLine($"{textBox1.Text},{textBox2.Text},{textBox3.Text}," +
+                    $"{textBox4.Text},{textBox5.Text},{y1}");
             }
             MessageBox.Show("ファイルに追記しました");
 
