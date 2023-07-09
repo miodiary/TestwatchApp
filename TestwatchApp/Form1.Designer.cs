@@ -108,7 +108,7 @@
             this.chart1.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
             this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(12, 12);
+            this.chart1.Location = new System.Drawing.Point(12, 8);
             this.chart1.Name = "chart1";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
@@ -140,7 +140,7 @@
             this.chart1.Series.Add(series3);
             this.chart1.Series.Add(series4);
             this.chart1.Series.Add(series5);
-            this.chart1.Size = new System.Drawing.Size(454, 400);
+            this.chart1.Size = new System.Drawing.Size(469, 369);
             this.chart1.TabIndex = 10;
             this.chart1.Text = "chart1";
             // 
@@ -199,14 +199,14 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(692, 453);
+            this.ClientSize = new System.Drawing.Size(644, 406);
+            this.Controls.Add(this.chart1);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.textBox4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.textBox3);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.chart1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label4);

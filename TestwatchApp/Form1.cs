@@ -28,6 +28,7 @@ namespace TestwatchApp
             // 「chartArea」という名前のエリアを生成します
             ChartArea chartArea = new ChartArea("chartArea");
             chart1.ChartAreas.Add(chartArea);
+            chart1.ChartAreas["chartArea"].AxisX.Minimum = 0;
             chart1.ChartAreas["chartArea"].AxisY.Minimum = 0;
             chart1.ChartAreas["chartArea"].AxisY.Maximum = 500;
 
