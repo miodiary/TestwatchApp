@@ -25,6 +25,7 @@ namespace TestwatchApp
             InitializeComponent();
             chart1.ChartAreas.Clear();
             chart1.Series.Clear();
+
             // 「chartArea」という名前のエリアを生成します
             ChartArea chartArea = new ChartArea("chartArea");
             chart1.ChartAreas.Add(chartArea);
@@ -32,7 +33,7 @@ namespace TestwatchApp
             chart1.ChartAreas["chartArea"].AxisY.Minimum = 0;
             chart1.ChartAreas["chartArea"].AxisY.Maximum = 500;
 
-            // Series(系列)を生成します
+            // Series(系列)を生成　合計
             series1 = new Series();
             series1.ChartType = SeriesChartType.Line;
             series1.LegendText = "合計";
@@ -40,35 +41,40 @@ namespace TestwatchApp
             series1.MarkerColor = Color.Blue;          //マーカーの背景色
             series1.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
 
+            // Series(系列)を生成　国語
             series2 = new Series();
             series2.ChartType = SeriesChartType.Line;
             series2.LegendText = "国語";
-            series2.MarkerSize = 10;                    //マーカーのサイズ
-            series2.MarkerColor = Color.Red;          //マーカーの背景色
-            series2.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
+            series2.MarkerSize = 10;
+            series2.MarkerColor = Color.Red;
+            series2.MarkerStyle = MarkerStyle.Circle;
 
+            // Series(系列)を生成　数Ⅰ・A
             series3 = new Series();
             series3.ChartType = SeriesChartType.Line;
             series3.LegendText = "数Ⅰ・A";
-            series3.MarkerSize = 10;                    //マーカーのサイズ
-            series3.MarkerColor = Color.Green;          //マーカーの背景色
-            series3.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
+            series3.MarkerSize = 10;
+            series3.MarkerColor = Color.Green;
+            series3.MarkerStyle = MarkerStyle.Circle;
 
+            // Series(系列)を生成　数Ⅱ・B
             series4 = new Series();
             series4.ChartType = SeriesChartType.Line;
             series4.LegendText = "数Ⅱ・B";
-            series4.MarkerSize = 10;                    //マーカーのサイズ
-            series4.MarkerColor = Color.DarkBlue;          //マーカーの背景色
-            series4.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
+            series4.MarkerSize = 10;
+            series4.MarkerColor = Color.DarkBlue;
+            series4.MarkerStyle = MarkerStyle.Circle;
 
+            // Series(系列)を生成　英語
             series5 = new Series();
             series5.ChartType = SeriesChartType.Line;
             series5.LegendText = "英語";
-            series5.MarkerSize = 10;                    //マーカーのサイズ
-            series5.MarkerColor = Color.Orange;          //マーカーの背景色
-            series5.MarkerStyle = MarkerStyle.Circle;  //マーカーの形状 
+            series5.MarkerSize = 10;
+            series5.MarkerColor = Color.Orange;
+            series5.MarkerStyle = MarkerStyle.Circle;
         }
 
+        // CSVファイルのデータを保存する
         string path = "Test.csv";
         int[] jap = new int[100];
         int[] math1 = new int[100];
@@ -77,6 +83,7 @@ namespace TestwatchApp
         int[] sum = new int[100];
         int n = 0;
 
+        // データ一時保管用
         int x1 = 0;
         int y1 = 0;
         int y2 = 0;
@@ -153,6 +160,13 @@ namespace TestwatchApp
                     $"{textBox4.Text},{textBox5.Text},{y1}");
             }
             MessageBox.Show("ファイルに追記しました");
+
+            //テキストボックスの中身を消す
+            textBox1.Clear();
+            textBox2.Clear();
+            textBox3.Clear();
+            textBox4.Clear();
+            textBox5.Clear();
 
             n++;
         }
